@@ -1,0 +1,503 @@
+/* .main-container {
+    padding: 10px;
+} */
+
+/* Material Styles */
+.btn-mat {
+  position: relative;
+  padding: 8px;
+  margin: 30px auto;
+  overflow: hidden;
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  background-color: #2eb4cc;
+  color: #ecf0f1;
+  transition: background-color .3s;
+  border-radius: 5px;
+}
+.btn-mat.lite {
+  background-color: #80c8e4;;
+}
+.btn-mat:hover, .btn-mat:focus {
+  background-color: #80c8e4;
+}
+
+.btn-mat > * {
+  position: relative;
+}
+
+.btn-mat span {
+  display: block;
+  padding: 12px 24px;
+}
+
+.btn-mat:before {
+  content: "";
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  
+  display: block;
+  width: 0;
+  padding-top: 0;
+    
+  border-radius: 100%;
+  
+  background-color: rgba(236, 240, 241, .3);
+  
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.btn-mat:active:before {
+  width: 120%;
+  padding-top: 120%;
+  
+  transition: width .2s ease-out, padding-top .2s ease-out;
+}
+
+.btn-mat.orange {
+  background-color: #e67e22;
+}
+
+.btn-mat.orange:hover, .btn-mat.orange:focus {
+  background-color: #d35400;
+}
+
+.btn-mat.red {
+  background-color: #e74c3c;
+}
+
+.btn-mat.red:hover, .btn-mat.red:focus {
+  background-color: #c0392b;
+}
+
+
+/* select starting stylings ------------------------------*/
+.select {
+  font-family: 'Roboto','Helvetica','Arial',sans-serif;
+	position: relative;
+	width: 350px;
+}
+
+.select-text {
+	position: relative;
+	font-family: inherit;
+	background-color: transparent;
+	width: 350px;
+	padding: 10px 10px 10px 0;
+	font-size: 18px;
+	border-radius: 0;
+	border: none;
+	border-bottom: 1px solid rgba(0,0,0, 0.12);
+}
+
+/* Remove focus */
+.select-text:focus {
+	outline: none;
+	border-bottom: 1px solid rgba(0,0,0, 0);
+}
+
+	/* Use custom arrow */
+.select .select-text {
+	appearance: none;
+	-webkit-appearance:none
+}
+
+.select:after {
+	position: absolute;
+	top: 18px;
+	right: 10px;
+	/* Styling the down arrow */
+	width: 0;
+	height: 0;
+	padding: 0;
+	content: '';
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid rgba(0, 0, 0, 0.12);
+	pointer-events: none;
+}
+
+
+/* LABEL ======================================= */
+.select-label {
+	color: rgba(0,0,0, 0.26);
+	font-size: 18px;
+	font-weight: normal;
+	position: absolute;
+	pointer-events: none;
+	left: 0;
+	top: 10px;
+	transition: 0.2s ease all;
+}
+
+/* active state */
+.select-text:focus ~ .select-label, .select-text:valid ~ .select-label {
+	color: #2F80ED;
+	top: -20px;
+	transition: 0.2s ease all;
+	font-size: 14px;
+}
+
+/* BOTTOM BARS ================================= */
+.select-bar {
+	position: relative;
+	display: block;
+	width: 350px;
+}
+
+.select-bar:before, .select-bar:after {
+	content: '';
+	height: 2px;
+	width: 0;
+	bottom: 1px;
+	position: absolute;
+	background: #2F80ED;
+	transition: 0.2s ease all;
+}
+
+.select-bar:before {
+	left: 50%;
+}
+
+.select-bar:after {
+	right: 50%;
+}
+
+/* active state */
+.select-text:focus ~ .select-bar:before, .select-text:focus ~ .select-bar:after {
+	width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.select-highlight {
+	position: absolute;
+	height: 60%;
+	width: 100px;
+	top: 25%;
+	left: 0;
+	pointer-events: none;
+	opacity: 0.5;
+}
+
+
+.brise-input {
+	width: 300px;
+	position: relative;
+	margin: 5px;
+	overflow: hidden;
+	padding-top: 15px;
+}
+.brise-input input {
+	width: 100%;
+	padding: 10px;
+	border: none;
+	outline: none;
+	border-bottom: 1px solid #999;
+	box-sizing: border-box;
+	font-size: 16px;
+	position: relative;
+	z-index: 5;
+	background: none;
+}
+.brise-input input:focus ~ label, input:valid ~ label  {
+	top: 0px;
+	transform: scale(0.94) translateX(-2px);
+	color: #4485c5;
+}
+.brise-input .line {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 3px;
+	background: #4485c5;
+	left: -999px;
+	transition: .25s;
+	opacity: 0;
+	z-index: 6;
+}
+.brise-input input:focus ~ .line {
+	left: 0;
+	opacity: 1;
+}
+.brise-input label {
+	position: absolute;
+	left: 10px;
+	top: 45%;
+	transition: ease-out .15s;
+	color: #999;
+}
+
+/* End Inputs */
+
+
+/* Textarea style */
+
+.brise-text {
+	margin: 5px;
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+	padding-top: 15px;
+}
+.brise-text textarea {
+	width: 100%!important;
+	padding: 10px;
+	border: none;
+	outline: none;
+	border: 1px solid #999;
+	box-sizing: border-box;
+	font-size: 16px;
+	position: relative;
+	z-index: 5;
+	background: none;
+}
+.brise-text label {
+	position: absolute;
+	top: 20px;
+	left: 10px;
+	color: #999;
+	opacity: 1;
+	transition: .15s;
+}
+.brise-text textarea:focus ~ label, textarea:valid ~ label {
+	opacity: 0;
+}
+/* End Textarea */
+
+
+/* Checkbox style */
+
+.brise-checkbox {
+	display: inline-block;
+	margin: 5px;
+}
+.brise-checkbox label {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	position: relative;
+	color: #999;
+}
+.brise-checkbox label input {
+	display: none;
+}
+.brise-checkbox label .checkbox {
+	display: block;
+	width: 17px;
+	height: 17px;
+	border: 1px solid #999;
+	margin-right: 10px;
+	transition: .15s;
+	position: relative;
+}
+.brise-checkbox label .checkbox::before {
+	content: '';
+	position: absolute;
+	left: 3px;
+	top: 3px;
+	bottom: 3px;
+	right: 3px;
+	width: 11px;
+	height: 11px;
+	background: #4485c5;
+	opacity: 0;
+	transform: scale(1.5);
+	transition: ease-out .15s
+	
+}
+.brise-checkbox label input:checked ~ .checkbox::before {
+	transform: scale(1);
+	opacity: 1;
+}
+.brise-checkbox label input:checked ~ .label {
+	color: #4485c5;
+}
+.brise-checkbox label input:checked ~ .checkbox{
+	border: 1px solid #4485c5;
+}
+
+/* End Checkbox */
+
+/* Radio Style */
+
+.brise-radio {
+	display: inline-block;
+	margin: 5px;
+}
+.brise-radio label {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	position: relative;
+	color: #999;
+}
+.brise-radio label input {
+	display: none;
+}
+.brise-radio label .radio {
+	display: block;
+	width: 17px;
+	height: 17px;
+	border: 1px solid #999;
+	border-radius: 50%;
+	margin-right: 10px;
+	transition: .15s;
+	position: relative;
+}
+.brise-radio label .radio::before {
+	content: '';
+	position: absolute;
+	left: 3px;
+	top: 3px;
+	bottom: 3px;
+	right: 3px;
+	width: 11px;
+	height: 11px;
+	background: #4485c5;
+	border-radius: 50%;
+	opacity: 0;
+	transform: scale(1.5);
+	transition: ease-out .15s
+	
+}
+.brise-radio label input:checked ~ .radio::before {
+	transform: scale(1);
+	opacity: 1;
+}
+.brise-radio label input:checked ~ .label {
+	color: #4485c5;
+}
+.brise-radio label input:checked ~ .radio{
+	border: 1px solid #4485c5;
+}
+/* End Radio */
+
+/* Upload style */
+
+.brise-upload label, .brise-btn {
+	margin: 10px 0;
+	margin-bottom: 10px;
+	width: auto;
+	cursor: pointer;
+	color: #fff;
+	display: inline-block;
+	background: #4485c5;
+	font-size: 16px;
+	padding: 8px 20px;
+	transition: .15s;
+	border: none;
+}
+.brise-upload label:hover,.brise-btn:hover{
+	background: #659cd2;
+	transition: .15s;
+} 
+.brise-upload label input {
+	display: none;
+}
+.brise-btn {
+	font-size: 20px;
+	padding: 10px 40px;
+}
+/* End upload */
+
+
+/* Custom CSS */
+
+/* Navigationbar css */
+/* .navigation-holder > button:nth-child(n+1){
+  margin-right: 5px;
+} */
+.title-holder {
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+.navigation-holder {
+  display: flex;
+}
+.navigation-holder > a {
+  margin: 0 5px;
+  flex: auto;
+}
+.navigation-holder > a > .btn-mat {
+  width: 100%;
+  margin: 0 5px;
+  border-radius: 0;
+}
+
+.text-lt {
+  color: #000000ab;
+}
+
+input[type=date] {
+  padding: 5px;
+  border-radius: 11px;
+  border: 1px solid #9d9797;
+  margin-bottom: 10px;
+}
+
+.mini-grid-cell {
+  width: 25%;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.date-picker-container {
+  width: 17%;
+  display: inline-block;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.satellite-container > .container-flex {
+  padding: 0 50px;
+}
+
+/* Detection */
+.detection-container {
+  padding: 15px;
+}
+
+.input-preview, .input-preview > div > div {
+  margin: 0 auto;
+  min-width: 350px;
+  min-height: 450px;
+}
+
+.help-text {
+  margin-top: 5px;
+  color: #ccc;
+}
+
+.filter-container {
+  padding: 15px;
+  float : right;
+}
+
+.brise-input {
+  display: inline-block;
+}
+
+.output-container {
+  padding: 0 15px;
+  display: flex;
+}
+
+.output-container > div {
+  flex: auto;
+  width: 45%;
+}
+
+.output-container > div > img {
+  width: 85%;
+  height: 100%;
+  margin: 0 auto;
+  display: inherit;
+}
