@@ -1,13 +1,17 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import '../css/Progression.css';
 
 const devUrl = '';
 const prodUrl = 'https://wildfire-flask-backend.herokuapp.com';
 
-class FireEvaluation extends React.Component{
-
-    constructor(props) {
-        super(props)
+class FireAnalytics extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+          id : "someUniqueId", // I would use this.props.id for a real world implementation
+          imageURI : null
+        }
     }
 
     render(){        
@@ -18,10 +22,10 @@ class FireEvaluation extends React.Component{
                 <div className="container-fluid custom-fluid">
                     <div className="filter-container">
                         <div className="country-filter-container select">
-                            <p for="Select Region" style={{marginBottom: '5px',fontWeight: 'bold'}}>Select Metrics</p>
+                            <p for="Select Region" style={{marginBottom: '5px',fontWeight: 'bold'}}>Select Model</p>
                             <select className="select-text" name="Country" id="regionSelected" style={{width: '100%'}}>
                                 <option value="North California" >LSTM</option>
-                                <option value="San Diego" selected>Comparision</option>
+                                <option value="San Diego" selected>YOLO</option>
                             </select>
                         </div>
                     </div>
@@ -37,4 +41,4 @@ class FireEvaluation extends React.Component{
 
 
 
-export default FireEvaluation;
+export default FireAnalytics;

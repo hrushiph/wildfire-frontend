@@ -54,7 +54,7 @@ class MyNavbar extends React.Component{
                         <Link className='list-group-item list-group-item-action bg-light' to="/risk">Fire Risk Prediction</Link>
                     }
                     {
-                        url.includes('evaluation')?
+                        url.includes('evaluation') && !url.includes('new-version')?
                         <Link className='list-group-item list-group-item-action bg-light' to="/model-evaluation" style={{borderRight:'10px solid #3d3d3d'}}>Model Evaluation</Link>
                         :
                         <Link className='list-group-item list-group-item-action bg-light' to="/model-evaluation" >Model Evaluation</Link>

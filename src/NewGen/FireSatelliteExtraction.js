@@ -77,7 +77,7 @@ class FireSatelliteExtraction extends React.Component{
                         <div className="date-picker-container">
                             <span className="form-group">
                             <p style={{marginBottom: '5px',fontWeight: 'bold'}}>From</p>
-                            <input type="date" for="fromDate" value="2020-08-16" id="fromDate"/>
+                            <input type="date" for="fromDate" value="2020-07-30" id="fromDate"/>
                             </span>
                         </div>
                         <div className="date-picker-container">

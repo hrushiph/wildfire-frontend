@@ -43,8 +43,8 @@ class MiniProgression extends React.Component{
                                 <button className="btn-mat lite">Evaluation</button>
                         }
                     </Link>
-                    <Link to="/new-version/evaluation">
-                        {   url.includes('analysis')?
+                    <Link to="/new-version/analytics">
+                        {   url.includes('analytics')?
                                 <button className="btn-mat">Analysis</button>
                             :
                                 <button className="btn-mat lite">Analysis</button>

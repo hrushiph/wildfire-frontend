@@ -11,7 +11,9 @@ class FireDetection extends React.Component{
         this.state = {
           id : "someUniqueId", // I would use this.props.id for a real world implementation
           imageURI : null
-        }
+        };
+        this.files = null;
+        this.base64 = null;
     }
     
     buildImgTag(){
@@ -32,6 +34,7 @@ class FireDetection extends React.Component{
             this.setState({imageURI:ev.target.result});
             }.bind(this);
             reader.readAsDataURL(e.target.files[0]);
+            this.files = e.target.files[0]
         }
     }
     
@@ -41,14 +44,31 @@ class FireDetection extends React.Component{
         this.props.onChange(e);
     }
 
-    detect(e) {
-        console.log('detecting')
+    convertBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+          const fileReader = new FileReader();
+          fileReader.readAsDataURL(file)
+          fileReader.onload = () => {
+            resolve(fileReader.result);
+          }
+          fileReader.onerror = (error) => {
+            reject(error);
+          }
+        })
+      }
+
+    detect = async (event) => {
+        console.log('detecting');
+        console.log(this.files);
+        this.base64 = await this.convertBase64(this.files);
+        console.log(this.base64)
+        console.log(typeof(this.base64))
         fetch('http://127.0.0.1:5000/api/getDetection', {
             method: "POST",
             headers: {
                 'Access-Control-Allow-Origin': true
             },
-            body: (window.URL || window.webkitURL).createObjectURL('../ImageProcessing/veg_firemap.jpeg')
+            body: this.base64.split(',')[1]
         })
         // .then(res => print(res))
         .then(resData => {

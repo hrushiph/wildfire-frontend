@@ -478,7 +478,12 @@ input[type=date] {
 
 .filter-container {
   padding: 15px;
-  float : right;
+  width: 100%;
+  display: inline-block;
+}
+
+.filter-container > .country-filter-container {
+	float: right;
 }
 
 .brise-input {
@@ -500,4 +505,13 @@ input[type=date] {
   height: 100%;
   margin: 0 auto;
   display: inherit;
+}
+.image-container {
+	padding: 20px;
+}
+.image-container > img {
+	width: 350px;
+}
+.custom-fluid {
+	display: inline-block;
 }
