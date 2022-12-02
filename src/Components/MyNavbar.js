@@ -11,6 +11,12 @@ class MyNavbar extends React.Component{
 
         return(
             <div className="d-flex" id="wrapper">
+                <div className="spinner hidden">
+                    <img src={require('../images/spinner.gif')}/>
+                </div>
+                <div className="spinner-detection hidden">
+                    <img src={require('../images/spinner.gif')}/>
+                </div>
             <div className="bg-light border-right" id="sidebar-wrapper">
                 <div className="sidebar-heading">
                     <img src='https://upload.wikimedia.org/wikipedia/en/thumb/e/ec/San_Jose_State_Spartans_logo.svg/1200px-San_Jose_State_Spartans_logo.svg.png' alt='SJSU' width='40px' style={{margin:"0 16px 0 0"}}></img>

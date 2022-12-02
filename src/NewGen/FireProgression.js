@@ -9,25 +9,26 @@ class FireProgression extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-          id : "someUniqueId", // I would use this.props.id for a real world implementation
-          imageURI : null
+          lat : "", // I would use this.props.id for a real world implementation
+          imageURI : null,
+          date : "",
+          latlong: sessionStorage.getItem("latlong"),
+          date : sessionStorage.getItem("date")
         }
     }
 
     detect(e) {
         console.log('detecting')
-        // fetch('http://127.0.0.1:5000/api/getDetection', {
-        //     method: "POST",
-        //     headers: {
-        //         'Access-Control-Allow-Origin': true
-        //     },
-        //     body: (window.URL || window.webkitURL).createObjectURL('../ImageProcessing/veg_firemap.jpeg')
-        // })
-        // // .then(res => print(res))
-        // .then(resData => {
-        //     console.log(resData)
-        // })
-
+        fetch('http://127.0.0.1:5000/api/getProgression', {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                'Access-Control-Allow-Origin': true
+            },
+            body: { lat : this.state.lat, date : this.state.date }
+        },  { mode:'no-cors' } )   
+        .then(response => response.json())
+        .then(jsondata => console.log(jsondata))
     }
 
     render(){  
@@ -39,18 +40,20 @@ class FireProgression extends React.Component{
                                 id={this.state.id}
                                 type="input"
                                 className="show-for-sr"
-                                placeholder="Cordinates" />
+                                placeholder="Cordinates" 
+                                value={this.state.latlong} />
                         <input
                                 id={this.state.id}
                                 type="input"
                                 className="show-for-sr"
-                                placeholder="Date MM/DD/YYYY" />
+                                placeholder="Date - MM/DD/YYYY" 
+                                value={this.state.date} />
 
                     </div>
                     <p
                         htmlFor={this.state.id}
                         className="button help-text">
-                            Enter the co-ordinates to detect
+                            Enter the co-ordinates to evaluate the progression
                     </p>
                     <div className="button-container">
                             <button
@@ -58,16 +61,14 @@ class FireProgression extends React.Component{
                                 className="btn btn-secondary btn-mat"
                                     onClick={this.detect.bind(this)}
                                 >
-                                Detect
+                                    Evaluate Progression
                             </button>
                         </div>
                 </div>
                 <div className="output-container" >
-                    <div className="detection-holder">
-                        <img src={require('../images/detect.jpg')}></img>
-                    </div>
-                    <div className="progression-holder">
-                        <img src={require('../ImageProcessing/final_output.gif')}></img>
+                    <div className="progression-holder text-center">
+                        <img src={require('../ImageProcessing/final_output_progression.gif')}></img>
+                        <img src={require('../ImageProcessing/spread_pattern.png')}></img>
                     </div>
                 </div>
             </div>

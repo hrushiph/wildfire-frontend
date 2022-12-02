@@ -10,7 +10,9 @@ class FireDetection extends React.Component{
         super(props);
         this.state = {
           id : "someUniqueId", // I would use this.props.id for a real world implementation
-          imageURI : null
+          imageURI : null,
+          showPrediction : false,
+          image : ''
         };
         this.files = null;
         this.base64 = null;
@@ -20,9 +22,13 @@ class FireDetection extends React.Component{
         let imgTag = null;
         if (this.state.imageURI !== null)
             imgTag = (<div className="row">
-                        <div className="small-9 small-centered columns">
-                        <img className="thumbnail" src={this.state.imageURI}></img>
+                        <div className="small-6">
+                            <img className="thumbnail" src={this.state.imageURI}></img>
                         </div>
+                        <div className="input-preview" style={{visibility : `${this.state.showPrediction ? 'visible' : 'hidden' }`}}>
+                                {/* <img className="img-preview" src={require('../ImageProcessing/predictions.jpg')} /> */}
+                                <img className="img-preview" src={`data:image/png;base64,${this.state.image}`} />
+                            </div>
                     </div>);
         return imgTag;
     }
@@ -58,22 +64,31 @@ class FireDetection extends React.Component{
       }
 
     detect = async (event) => {
-        console.log('detecting');
-        console.log(this.files);
+        console.log('Detecting');
+        document.getElementsByClassName('spinner')[0].classList.remove('hidden')
+        // console.log(this.files);
         this.base64 = await this.convertBase64(this.files);
-        console.log(this.base64)
-        console.log(typeof(this.base64))
+        // console.log(this.base64)
+        // console.log(typeof(this.base64))
         fetch('http://127.0.0.1:5000/api/getDetection', {
             method: "POST",
+            mode: "cors",
             headers: {
-                'Access-Control-Allow-Origin': true
+                'Access-Control-Allow-Origin': '*'
             },
             body: this.base64.split(',')[1]
-        })
-        // .then(res => print(res))
+        },{mode: 'cors'})
+        .then(res => res.json())
         .then(resData => {
-            console.log(resData)
-        })
+            this.setState({
+                showPrediction : true,
+                image : resData.image
+            });
+            document.getElementsByClassName('spinner')[0].classList.add('hidden')  
+        }).catch(function(e) {
+            console.log("error");
+            console.log(e)
+        });
     }
 
     render(){  
@@ -104,18 +119,24 @@ class FireDetection extends React.Component{
                     </div>
                     <label
                         htmlFor={this.state.id}
-                        className="button help-text">
+                        className="button help-text upload-container">
                             Upload a image to detect
                     </label>
                     <div className="button-container">
                             <button
+                                style={{marginTop: '7px', padding: '7px 30px', marginRight: '10px'}}
+                                className="btn btn-secondary btn-mat"
+                                onClick={this.detect.bind(this)}
+                                >
+                                    Detect Wildfire
+                            </button>
+                            <button
                                 style={{marginTop: '7px', padding: '7px 30px'}}
                                 className="btn btn-secondary btn-mat"
-                                    onClick={this.detect.bind(this)}
                                 >
-                                Detect Progression
+                                    <Link style={{color: "#fff", textDecoration: 'none'}} to="/new-version/progression">Analyze Progression</Link>
                             </button>
-                        </div>
+                    </div>
                 </div>
             </div>
         );

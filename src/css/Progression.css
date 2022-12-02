@@ -20,7 +20,11 @@
   background-color: #80c8e4;;
 }
 .btn-mat:hover, .btn-mat:focus {
-  background-color: #80c8e4;
+  background-color: #2EB4F2;
+  border: 0;
+}
+button:focus {
+	outline: 0;
 }
 
 .btn-mat > * {
@@ -415,21 +419,28 @@
 /* .navigation-holder > button:nth-child(n+1){
   margin-right: 5px;
 } */
+
 .title-holder {
   margin-top: 10px;
   text-transform: uppercase;
 }
+
 .navigation-holder {
   display: flex;
 }
+
 .navigation-holder > a {
-  margin: 0 5px;
   flex: auto;
 }
+
 .navigation-holder > a > .btn-mat {
   width: 100%;
-  margin: 0 5px;
+  margin: 0;
   border-radius: 0;
+}
+
+.select{
+	width: 100%;
 }
 
 .text-lt {
@@ -501,8 +512,7 @@ input[type=date] {
 }
 
 .output-container > div > img {
-  width: 85%;
-  height: 100%;
+  width: 39%;
   margin: 0 auto;
   display: inherit;
 }
@@ -510,8 +520,100 @@ input[type=date] {
 	padding: 20px;
 }
 .image-container > img {
-	width: 350px;
+	width: 325px;
+	padding: 5px;
+}
+.img-preview-satellite {
+	width: 500px !important;
+	padding: 5px;
 }
 .custom-fluid {
 	display: inline-block;
 }
+
+.input-preview img, .img-preview {
+    width: 550px;
+    margin-bottom: 10px;
+}
+
+.spinner > img {
+	position: fixed;
+    width: 50px;
+    left: 56.5%;
+    top: 13%;
+    border-radius: 32px;
+}
+
+.spinner-detection > img {
+	position: fixed;
+    width: 50px;
+    left: 55.5%;
+    top: 73%;
+    border-radius: 32px;
+}
+
+.hidden {
+	display: none;
+}
+
+.analytics-image-container.yolo-container > img{
+	width: 500px;
+	height: 350px;
+}
+.analytics-image-container > img {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.tile-container > .tile {
+    color: #fff;
+    width: 50%;
+    display: inline-block;
+    background: #df5a5aed;
+    padding: 50px;
+    text-align: right;
+    font-size: 50px;
+    position: relative;
+    border: 10px solid #fff;
+}
+
+.tile > p {
+	font-size: 16px;
+    text-align: left;
+}
+
+.tile > img {
+	height: 71px;
+    position: absolute;
+    top: 85px;
+    left: 63%;
+}
+
+.full-input {
+	width: 100%;
+    padding: 5px 15px;
+    border: 1px solid #ccc;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
+.input-preview {
+	margin-bottom: 20px;
+}
+
+.input-img-holder > input {
+	margin-left: 100px;
+}
+
+.input-img-holder.brise-input > input {
+	margin-left : 0;
+}
+
+/* Magnify */
+.output-container > div.progression-holder > img {
+	width: 38%;
+    margin: 20px;
+    display: initial;
+}
+  
