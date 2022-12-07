@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import '../css/Progression.css';
 import data2022 from '../data/Fire_Inactive_2022.json';
 import data2021 from '../data/Fire_Inactive_2021.json';
@@ -26,6 +25,14 @@ class FireAnalytics extends React.Component{
           targetHistoricalData : [],
           acresBurned : acresBurned
         }
+
+        this.onGetVegetation = this.onGetVegetation.bind(this);
+    }
+
+    onGetVegetation(event) {
+        setTimeout(() => {
+            document.getElementsByClassName('click-link')[0].click();
+        }, "1000")
     }
 
     getFireData(year) {
@@ -110,6 +117,25 @@ class FireAnalytics extends React.Component{
                             <CountUp delay={1} end={this.state.acresBurned} />
                             {/* <p className="counter">{this.state.acresBurned}</p> */}
                         </div>
+                    </div>
+                    <div className="tile-container text-center">
+                        Average Stats of Wildfires in California in the past couple of decades
+                        <img style={{width: '100%'}} src={require('../ImageProcessing/Dashboard/FireAnalytics.png')} />
+                    </div>
+                </div>
+                <div className="historic-container text-center">
+                    <button
+                        style={{marginTop: '7px'}}
+                        className="btn btn-secondary btn-mat"
+                            onClick={this.onGetVegetation}
+                        >
+                        Get Historic Wildfire Data
+                    </button>
+                    <a className="click-link hidden" target="_blank" href="https://code.earthengine.google.com/9aa22b6188c4a5e47c9f9717e730b70c?hideCode=true"></a>
+                    <div>
+                    <Link to='/new-version/overview'>
+                        <button className="btn-mat lite">Overview/Contributions of the Project.</button>
+                    </Link>
                     </div>
                 </div>
             </div>

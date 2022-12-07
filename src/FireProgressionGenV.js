@@ -27,13 +27,12 @@ class FireProgressionGenV extends React.Component{
 
     render(){
         return(
-            <div>
+            <div className="wildfire-main-container">
                 <MyNavbar/>
-                <div style={{marginLeft:'15rem'}}>
+                <div className="wildfire-navigation-container" style={{marginLeft:'15rem'}}>
                     <div className="main-container">
                         <MiniNavigation></MiniNavigation>
                     </div>
-
                 </div>
             </div>
         );

@@ -18,7 +18,8 @@ class FireSatelliteExtraction extends React.Component{
             date : '',
             toDate: '',
             fromDate: '',
-            showWeather : false
+            showWeather : false,
+            modis: false
         };
         this.onDownload = this.onDownload.bind(this);
         this.onFireDetect = this.onFireDetect.bind(this);
@@ -54,7 +55,8 @@ class FireSatelliteExtraction extends React.Component{
             document.getElementsByClassName('image-container')[0].innerHTML = '';  
             document.getElementsByClassName('detection-container')[0].classList.remove('hidden')  
             this.setState({
-                image : resData.image
+                image : resData.image,
+                modis: false
             });
             document.getElementsByClassName('spinner-detection')[0].classList.add('hidden')
         }).catch(function(e) {
@@ -63,7 +65,7 @@ class FireSatelliteExtraction extends React.Component{
             document.getElementsByClassName('spinner-detection')[0].classList.add('hidden')
         });
 
-        fetch('http://api.weatherapi.com/v1/current.json?key=d792236248d74cf38a170519222211&q='+latlong+'&aqi=no', {
+        fetch('http://api.weatherapi.com/v1/current.json?key=9cc83df8acb048489d742021220712&q='+latlong+'&aqi=no', {
             method: "POST",
             mode: "cors",
             headers: {
@@ -79,7 +81,7 @@ class FireSatelliteExtraction extends React.Component{
                 wind_kph : resData.current.wind_kph,
                 humidity : resData.current.humidity,
                 wind_dir : resData.current.wind_dir,
-                date: '11/22/2022',
+                date: '12/06/2022',
                 showWeather: true
             })
         }).catch(function(e) {
@@ -107,7 +109,9 @@ class FireSatelliteExtraction extends React.Component{
             document.getElementsByClassName('image-container')[0].innerHTML = '';  
             document.getElementsByClassName('detection-container')[0].classList.remove('hidden')  
             this.setState({
-                image : resData.image
+                image : resData.image,
+                date: document.getElementById('fromDate').value,
+                modis: true
             });
             document.getElementsByClassName('spinner-detection')[0].classList.add('hidden')
         }).catch(function(e) {
@@ -145,7 +149,8 @@ class FireSatelliteExtraction extends React.Component{
         console.log('onDownload');
         document.getElementsByClassName('detection-container')[0].classList.add('hidden')
         this.setState({
-            image : ''
+            image : '',
+            modis: false
         });
         document.getElementsByClassName('image-container')[0].innerHTML = '';
         var fromDate = document.getElementById('fromDate').value;
@@ -275,6 +280,12 @@ class FireSatelliteExtraction extends React.Component{
                                 <span style={{marginRight: '10px', display : `${this.state.showWeather ? 'inline' : 'none' }`}}>Humidity - {this.state.humidity} mph,</span>
                                 <span style={{marginRight: '10px', display : `${this.state.showWeather ? 'inline' : 'none' }`}}>Wind Direction - {this.state.wind_dir} mph</span>
                             </div>
+                            <div style={{width:'48%', margin: '10px auto', display: this.state.modis? 'inline': 'none'}}>
+                                <span style={{float: 'left'}}>Live Image</span>
+                                <span style={{float: 'right'}}>Detection Processed Image</span>
+                            </div>
+                            <img className="modis-live-img" style={{width: '490px', height: '490px', padding: 0, display: this.state.modis? 'inline': 'none'}}
+                                src={`https://wvs.earthdata.nasa.gov/api/v1/snapshot?REQUEST=GetSnapshot&&CRS=EPSG:4326&WRAP=DAY&LAYERS=MODIS_Terra_CorrectedReflectance_Bands721&FORMAT=image/jpeg&HEIGHT=800&WIDTH=800&BBOX=36,-122,37,-121&TIME=${this.state.date}`}/>
                             <img className="img-preview-satellite" src={`data:image/png;base64,${this.state.image}`} />
                             <div className="button-container">
                                 <button

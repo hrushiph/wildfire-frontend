@@ -33,7 +33,8 @@ class FireEvaluation extends React.Component{
                             <select className="select-text" name="Country" id="regionSelected" style={{width: '100%'}} onChange={this.handleChange.bind(this)}>
                                 <option value="ED" selected>Efficient Det</option>
                                 <option value="YOLO">YOLO</option>
-                                <option value="value">Qlearning</option>
+                                <option value="qlearning">Qlearning</option>
+                                <option value="value">Value by Value</option>
                             </select>
                         </div>
                     </div>
@@ -58,6 +59,16 @@ class FireEvaluation extends React.Component{
                         <img src={require('../ImageProcessing/DetectionAnalytics/ROC-Qlearning.png')}></img>
                         <h5>Metrics</h5>
                         <img src={require('../ImageProcessing/DetectionAnalytics/Qmetrics.png')}></img>
+                    </div>
+                    <div className="yolo-container analytics-image-container" style={{display : `${this.state.targetValue=="qlearning" ? 'block' : 'none' }`}}>
+                        <h5>ROC</h5>
+                        <img src={require('../ImageProcessing/ProgressionAnalytics/ROC.png')}></img>
+                        <h5>Model Accuracy</h5>
+                        <img src={require('../ImageProcessing/ProgressionAnalytics/Model_Accuracy.png')}></img>
+                        <h5>Model Loss</h5>
+                        <img src={require('../ImageProcessing/ProgressionAnalytics/Model_Loss.png')}></img>
+                        <h5>Confusion Matrix</h5>
+                        <img src={require('../ImageProcessing/ProgressionAnalytics/Confusion_Matrix.png')}></img>
                     </div>
                 </div>
             </div>

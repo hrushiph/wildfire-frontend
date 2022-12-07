@@ -16,6 +16,7 @@ import FireDetection from './NewGen/FireDection';
 import FireEvaluation from './NewGen/FireEvaluation';
 import FireProgression from './NewGen/FireProgression';
 import FireAnalytics from './NewGen/FireAnalytics';
+import Overview from './NewGen/Overview';
 // import Flask from'./Flask-example';
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
       <Route path="/new-version/evaluation" component={FireEvaluation}></Route>
       <Route path="/new-version/progression" component={FireProgression}></Route>
       <Route path="/new-version/analytics" component={FireAnalytics}></Route>
+      <Route path="/new-version/overview" component={Overview}></Route>
       {/* <Route path='/flask' component={Flask}></Route> */}
     </BrowserRouter>
   );

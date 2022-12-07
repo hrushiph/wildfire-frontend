@@ -10,7 +10,7 @@ class MyNavbar extends React.Component{
         var url = window.location.href;
 
         return(
-            <div className="d-flex" id="wrapper">
+            <div className="d-flex navigation-mini-container" id="wrapper">
                 <div className="spinner hidden">
                     <img src={require('../images/spinner.gif')}/>
                 </div>

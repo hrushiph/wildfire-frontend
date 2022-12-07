@@ -24,6 +24,8 @@ class DataCollection extends React.Component{
         this.getCoordinates = this.getCoordinates.bind(this);
         this.handleModeChange = this.handleModeChange.bind(this);
 
+        window.open('/new-version/extraction')
+
     }
 
     componentDidMount(){
